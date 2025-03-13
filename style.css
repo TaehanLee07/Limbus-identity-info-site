@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'KotraBold';
+    src: url('fonts/KOTRA_BOLD.ttf') format('truetype');
+    font-weight: bold;
+}
+
+body {
+    background-color: #201B17;
+    color: #E0D7C6;
+    font-family: 'KotraBold', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.colorbtn button{
+    font-family: 'KotraBold', sans-serif;
+    background-color: #B94E31;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.container {
+    background: linear-gradient(145deg, #2b2622, #171411);
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px #000000, -10px -10px 20px #37302b;
+    padding: 20px;
+    width: 1200px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.container h1 a {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #F3C25F;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.container h3 a {
+    text-decoration: underline;
+    color: #C8BA9A;
+}
+
+button {
+    font-family: 'KotraBold', sans-serif;
+    background-color: #B94E31;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.15);
+    transition: all 0.2s;
+    background-color: #D8573E;
+}
+
+#search-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* 검색 결과 스타일 */
+#result {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(50, 40, 35, 0.8);
+    box-shadow: inset 0 0 10px #000;
+}
+
+/* 왼쪽 영역 (이미지, 내성, 체력, 속도) */
+.left-section {
+    flex: 1;
+    text-align: center;
+}
+
+#character-image {
+    width: 340px;
+    height: auto;
+    border-radius: 20px;
+    border: 5px solid #4A3D32;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+#resistances {
+    font-size: 1.2em;
+    color: #C8BA9A;
+    margin-top: 10px;
+}
+
+/* 오른쪽 영역 (이름, 스킬/패시브, 상세 정보) */
+.right-section {
+    flex: 2;
+    padding-left: 30px;
+}
+
+.toggle-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
+
+.toggle-buttons button {
+    padding: 8px 15px;
+    font-size: 1em;
+}
+
+.skill-info {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+/* 스킬 상세 정보 */
+.skill-details {
+    text-align: left;
+    background: rgba(20, 18, 15, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.skill-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skill-power {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+/* 팝업 정보 */
+.skill-power div:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    bottom: 0px;
+    text-align: center;
+    position: fixed;
+}
+
+.skill-I-Data {
+    padding-bottom: 40px;
+}
+
+#search-suggestions {
+    position: absolute;
+    background: #333;
+    color: white;
+    width: 200px;
+    border-radius: 5px;
+    display: none;
+    z-index: 100;
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.suggestion-item:hover {
+    background: #444;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인격 검색</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1><a href="index.html">인격 검색</a></h1>
+        <h3>인격 정보는 모두 4동기화 기준으로 나옵니다. <a href="https://github.com/TaehanLee07">개발자 깃허브 바로가기</a></h3>
+        <!-- <div class="colorbtn">
+            <input type="button" value="Default" onclick="
+            document.querySelector('body').style.backgroundColor = '#201B17';
+            ">
+            <input type="button" value="WhiteTheme" onclick="
+            document.querySelector('body').style.backgroundColor = '#E0D7C6';
+            document.querySelector('footer p').style.backgroundColor = '#201B17'
+            ">
+        </div> -->
+        <br>
+        <input type="text" id="search-input" placeholder="인격명을 입력해주세요">
+        <div id="search-suggestions"></div> <!-- 여기에 추천 검색어 표시 -->
+        <button id="search-button">검색</button>
+
+
+        <div id="result" class="hidden">
+            <div class="left-section">
+                <img id="character-image" src="images/럼버스컴퍼니로고.png" alt="">
+                <div id="info">
+                    <p>체력: <span id="hp"></span></p>
+                    <p>흐트러짐 구간: <span id="unFightGauge"></span></p>
+                    <p>속도: <span id="speed"></span></p>
+                    <p>참격 내성: <span id="slash-resistance"></span></p>
+                    <p>관통 내성: <span id="pierce-resistance"></span></p>
+                    <p>타격 내성: <span id="blunt-resistance"></span></p>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <h2 id="character-name"></h2>
+                <div class="toggle-buttons">
+                    <button id="toggle-skills">스킬</button>
+                    <button id="toggle-passives">패시브</button>
+                </div>
+
+                <div id="skills-section" class="hidden">
+                    <div class="skill-buttons">
+                        <button class="skill-btn" data-skill="1">1스킬</button>
+                        <button class="skill-btn" data-skill="2">2스킬</button>
+                        <button class="skill-btn" data-skill="3">3스킬</button>
+                        <button class="skill-btn" data-skill="defense">수비 스킬</button>
+                    </div>
+                    <div id="skill-info"></div>
+                </div>
+
+                <div id="passive-section" class="hidden">
+                    <h3 style="font-weight: bold; color: darkorange;"></h3>
+                    <p id="passive-info"></p>
+                    <h3 style="font-weight: bold; color: darkorange;"></h3>
+                    <p id="support-passive-info"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <footer>
+        <p>사이트 제작 : TaeHanLee07<br>정보 및 이미지 : 나무위키</p>
+    </footer> -->
+</body>
+
+</html>
