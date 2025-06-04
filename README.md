@@ -1,2 +1,2 @@
-# Limbus-identity-info-site
+# [Limbus-identity-info-site](https://taehanlee07.github.io/Limbus-identity-info-site/)
 림버스 컴퍼니 인격 정보 검색 사이트
