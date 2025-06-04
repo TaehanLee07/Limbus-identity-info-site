@@ -3,6 +3,7 @@ const characters = [
     {
         name: "[ LCB 수감자 ] 이상",
         image: "images/Yi Sang/기본이상.png",
+        grade: 1, // 인격의 등급 1이면 1성 2면 2성 3이면 3성 
         resistances: {
             slash: "취약",
             pierce: "내성",
@@ -796,7 +797,7 @@ const characters = [
                 atkType: "관통",
                 skill_num: "2",
                 skill2_info: "보유한 산나비·죽은나비가 10 이상이면, 합 위력 +1<br>대상의 침잠과 모든 나비의 합 6 당 코인 위력 +1 (최대 2)<br>[합 승리시] 침잠 횟수 1 증가<br>[공격 종료시] 최대 공명 수만큼 산나비·죽은나비를 얻음 (최대 6)"
-                + "<br>- 해당 공명이 완전 공명이면,<br>(최대 공명 수 × 2)만큼 얻음 (최대 12)<br>- 해당 공명이 완전 공명 4 이상이면, 대신 재장전<br><br>(Ⅰ) 산나비·죽은나비 5 소모<br>[적중시] 소모한 산나비·죽은나비만큼 나비 부여"
+                + "- 해당 공명이 완전 공명이면,<br>(최대 공명 수 × 2)만큼 얻음 (최대 12)<br>- 해당 공명이 완전 공명 4 이상이면, 대신 재장전<br><br>(Ⅰ) 산나비·죽은나비 5 소모<br>[적중시] 소모한 산나비·죽은나비만큼 나비 부여"
                 + "<br><br>(Ⅱ) 산나비·죽은나비 1 소모<br>[적중시] 소모한 산나비·죽은나비만큼 나비 부여", 
                 def_value: 4, 
                 plus_value: 6,
@@ -809,7 +810,7 @@ const characters = [
                 type: "나태",
                 atkType: "참격",
                 skill_num: "1",
-                skill3_info: "보유한 산나비·죽은나비 5마다 기본 위력 +1 (최대 4)<br>대상의 침잠과 모든 나비의 합 6 당 코인 위력 +1 (최대 2)<br>[합 승리시] 침잠 횟수 3 증가<br>[공격 종료시] 재장전"
+                skill3_info: "보유한산나비·죽은나비 5마다 기본 위력 +1 (최대 4)<br>대상의 침잠과 모든 나비의 합 6 당 코인 위력 +1 (최대 2)<br>[합 승리시] 침잠 횟수 3 증가<br>[공격 종료시] 재장전"
                 + "<br><br>(Ⅰ) 산나비·죽은나비 1 소모<br>[적중시] 소모한 산나비·죽은나비만큼 나비 부여<br><br>(Ⅱ) 산나비·죽은나비 6 소모<br>[적중시] 소모한 산나비·죽은나비만큼 나비 부여<br><br>"
                 + "(Ⅲ) 보유한 산나비·죽은나비 전부 소모<br>[적중시] 소모한 산나비·죽은나비만큼 나비 부여<br>[적중시] 이 스킬에서 소모한 산나비·죽은나비 1 당 피해량 +4%<br><br>(Ⅳ) [적중시] 대상의 모든 나비만큼 우울 피해"
                 + "<br>- 산나비와 죽은나비의 합으로 계산", 
@@ -922,6 +923,69 @@ const characters = [
             slash: "보통",
             pierce: "내성",
             blunt: "취약"
+        },
+
+        stats: {
+            hp: "229", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "2-4" // 속도
+        },
+
+        passives: {
+            passive_name: "분석",
+            passive: "[오만 x 2 공명]\n부정적인 효과가 걸려있는 대상에게 가하는 피해량 +10%", // 패시브
+            supassive_name: "정보중화",
+            support_passive: "[오만 x 3 보유]\n최대 체력이 가장 높은 아군 1명 공격 적중 시 25% 확률로 공격 레벨 감소 2 부여" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "내려베기", // 스킬 명
+                type: "오만", // 죄악 속성
+                atkType: "타격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "[적중시] 마비 1 부여", // 스킬에 대한 설명
+                def_value: 4, // 기본 위력
+                plus_value: 7, // 코인 당 추가 위력
+                count_of_coin: 1, // 코인의 갯수
+                maxValue: "11", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "올려베기", 
+                type: "나태",
+                atkType: "타격",
+                skill_num: "2",
+                skill2_info: "(Ⅱ) [적중시] 다음 턴에 공격 레벨 감소 3 부여", 
+                def_value: 5, 
+                plus_value: 4,
+                count_of_coin: 2,
+                maxValue: "13",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "후벼찌르기", 
+                type: "나태",
+                atkType: "참격",
+                skill_num: "1",
+                skill3_info: "(Ⅰ) [앞면 적중시] 다음 턴에 공격 위력 감소 1 부여<br><br>(Ⅱ) [앞면 적중시] 다음 턴에 공격 위력 감소 1 부여", 
+                def_value: 7, 
+                plus_value: 2,
+                count_of_coin: 3,
+                maxValue: "13",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "회피",
+                type: "오만",
+                def_type: "회피",
+                skill_num: "별도 생성",
+                def_skill_info: "", // 효과가 없는 경우엔 공백 처리
+                def_value: 2, 
+                plus_value: 10,
+                count_of_coin: 1,
+                maxValue: "12",
+            }
         }
     },
     {
@@ -931,6 +995,70 @@ const characters = [
             slash: "보통",
             pierce: "내성",
             blunt: "취약"
+        },
+
+        stats: {
+            hp: "229", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "2-4" // 속도
+        },
+
+        passives: {
+            passive_name: "자가충전",
+            passive: "[질투 x 4 보유]\n공격 종료 시 충전 횟수 1 증가<br>공격 종료 시 무작위 아군 1명의 충전 횟수 1 증가", // 패시브
+            supassive_name: "무전",
+            support_passive: "[질투 x 3 보유]\n최대 체력이 가장 낮은 아군 1명 충전 횟수 얻는 값 +1" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "에너지 순환", // 스킬 명
+                type: "질투", // 죄악 속성
+                atkType: "타격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "[사용시] 자신의 충전 횟수 2 증가<br>"
+                + "[적중시] 자신의 충전 횟수 2 증가", // 스킬에 대한 설명
+                def_value: 4, // 기본 위력
+                plus_value: 8, // 코인 당 추가 위력
+                count_of_coin: 1, // 코인의 갯수
+                maxValue: "12", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "도약", 
+                type: "우울",
+                atkType: "타격",
+                skill_num: "2",
+                skill2_info: "[사용시] 자신의 충전 횟수 3 증가<br>[적중시] 자신의 충전 횟수 3 증가.<br>br[적중시] 충전 횟수를 3 소모하여 다음 턴에 속박 4 부여", 
+                def_value: 6, 
+                plus_value: 4,
+                count_of_coin: 2,
+                maxValue: "14",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "과충전", 
+                type: "분노",
+                atkType: "타격",
+                skill_num: "1",
+                skill3_info: "충전 횟수가 5 이상이면, 합 위력 +2<br>[적중시] 충전 횟수를 5 소모하여 다음 턴에 공격 위력 감소 2 부여. 마비 3 부여", 
+                def_value: 6, 
+                plus_value: 3,
+                count_of_coin: 3,
+                maxValue: "17",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "가드",
+                type: "질투",
+                def_type: "방어",
+                skill_num: "별도 생성",
+                def_skill_info: "", // 효과가 없는 경우엔 공백 처리
+                def_value: 2, 
+                plus_value: 10,
+                count_of_coin: 1,
+                maxValue: "12",
+            }
         }
     },
     {
@@ -940,6 +1068,69 @@ const characters = [
             slash: "내성",
             pierce: "보통",
             blunt: "취약"
+        },
+
+        stats: {
+            hp: "189", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "3-6" // 속도
+        },
+
+        passives: {
+            passive_name: "각오",
+            passive: "[색욕 x 2 공명]\n다음 턴 시작 시 호흡 횟수가 4 이상이면 신속 2를 얻음", // 패시브
+            supassive_name: "지지",
+            support_passive: "[색욕 x 2 공명]\n최대 체력이 가장 낮은 아군 1명 수비 스킬의 최종 위력 +2" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "단격", // 스킬 명
+                type: "질투", // 죄악 속성
+                atkType: "참격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "[사용시] 호흡 횟수 2 증가<br>(Ⅰ) [적중시] 파열 2 부여", // 스킬에 대한 설명
+                def_value: 3, // 기본 위력
+                plus_value: 8, // 코인 당 추가 위력
+                count_of_coin: 1, // 코인의 갯수
+                maxValue: "11", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "깊게베기", 
+                type: "우울",
+                atkType: "관통",
+                skill_num: "2",
+                skill2_info: "(Ⅰ) [적중시] 다음 턴에 호흡 1 얻음<br><br>(Ⅱ) [적중시] 다음 턴에 호흡 1 얻음<br><br>(Ⅲ) [적중시] 다음 턴에 신속 4 얻음<br>[적중시] 다음 턴에 호흡 1 얻음", 
+                def_value: 5, 
+                plus_value: 3,
+                count_of_coin: 3,
+                maxValue: "14",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "기회 노리기", 
+                type: "분노",
+                atkType: "참격",
+                skill_num: "1",
+                skill3_info: "이전 턴에 피해를 받지 않은 경우 코인 위력 +3<br>(Ⅱ) [앞면 적중시] 파열 5 부여", 
+                def_value: 4, 
+                plus_value: 8,
+                count_of_coin: 2,
+                maxValue: "26",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "회피",
+                type: "질투",
+                def_type: "회피",
+                skill_num: "별도 생성",
+                def_skill_info: "", // 효과가 없는 경우엔 공백 처리
+                def_value: 3, 
+                plus_value: 10,
+                count_of_coin: 1,
+                maxValue: "13",
+            }
         }
     },
     {
@@ -949,6 +1140,72 @@ const characters = [
             slash: "취약",
             pierce: "보통",
             blunt: "내성"
+        },
+
+        stats: {
+            hp: "223", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "4-6" // 속도
+        },
+
+        passives: {
+            passive_name: "지역 보호",
+            passive: "[우울 x 4 보유]\n전투 시작 시 조작 패널에서 양 옆의 아군에게 방어 레벨 증가 2 부여<br>대상의 체력이 50% 미만이면 추가로 2 부여",
+            support_passive: "[우울 x 2 공명]\n전투 시작 시 체력 비율이 가장 낮은 아군 1명에게 방어 레벨 증가 2 부여<br>" +
+"대상의 체력이 50% 미만이면 추가로 2 부여" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "순찰", // 스킬 명
+                type: "질투", // 죄악 속성
+                atkType: "참격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "[사용시] 다음 턴에 이 스킬 슬롯의 도발치 2 증가<br>"
+                + "[합 패배] 방어 레벨 증가 3를 얻음<br>[적중시] 다음 턴에 방어 레벨 증가 2를 얻음", // 스킬에 대한 설명
+                def_value: 3, // 기본 위력
+                plus_value: 4, // 코인 당 추가 위력
+                count_of_coin: 2, // 코인의 갯수
+                maxValue: "11", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "고객 경호", 
+                type: "우울",
+                atkType: "참격",
+                skill_num: "2",
+                skill2_info: "[사용시] 현재 체력 비율이 가장 낮은 아군에게 방어 레벨 증가 4 부여 (턴당 최대 3회 발동)<br>자신의 방어 레벨 증가가 5 이상이면, 합 위력 +2<br>(Ⅰ) [적중시] 다음 턴에 방어 레벨 증가 1을 얻음" +
+                "<br><br>(Ⅱ) [적중시] 다음 턴에 방어 레벨 증가 1을 얻음<br><br>[적중시] 다음 턴에 방어 레벨 증가 1을 얻음", 
+                def_value: 4, 
+                plus_value: 3,
+                count_of_coin: 3,
+                maxValue: "15",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "치안 수호", 
+                type: "분노",
+                atkType: "참격",
+                skill_num: "1",
+                skill3_info: "자신의 방어 레벨 증가가 5 이상이면, 코인 위력 +1<br>[합 승리시] 체력 4 회복<br>(Ⅱ) 현재 체력 비율이 가장 낮은 아군에게 다음 턴에 신속 1, 방어 레벨 증가 2 부여<br>"
+                + "대상이 츠바이 협회 해결사면, 신속 1, 방어 레벨 증가 1 추가 부여", 
+                def_value: 6, 
+                plus_value: 5,
+                count_of_coin: 2,
+                maxValue: "18",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "가드",
+                type: "우울",
+                def_type: "방어",
+                skill_num: "별도 생성",
+                def_skill_info: "[사용시] 다음 턴에 이 스킬 슬롯의 도발치 3 증가", // 효과가 없는 경우엔 공백 처리
+                def_value: 12, 
+                plus_value: 6,
+                count_of_coin: 1,
+                maxValue: "18",
+            }
         }
     },
     {
@@ -958,6 +1215,71 @@ const characters = [
             slash: "보통",
             pierce: "취약",
             blunt: "내성"
+        },
+
+        stats: {
+            hp: "211", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "3-7" // 속도
+        },
+
+        passives: {
+            passive_name: "버틀러식 대응",
+            passive: "[우울 x 4 보유]\n합 승리 시 대상에게 침잠 1 부여 (턴 당 3회)<br>대상에게 저택의 메아리가 있다면 대신 3 부여", // 패시브
+            supassive_name: "그 날을 위한 훈련",
+            support_passive: "[우울 x 4 보유]\n정신력이 가장 낮은 아군 1명이 침잠이 5 이상 부여된 대상에게 공격 적중 시 자신의 정신력 3 회복 (턴 당 4회)" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "압수", // 스킬 명
+                type: "우울", // 죄악 속성
+                atkType: "참격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "[사용시] 대상의 침잠이 6 이상이면 코인 위력 +1<br>"
+                + "(Ⅱ) [적중시] 침잠 2 부여", // 스킬에 대한 설명
+                def_value: 3, // 기본 위력
+                plus_value: 4, // 코인 당 추가 위력
+                count_of_coin: 2, // 코인의 갯수
+                maxValue: "13", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "불청객 맞이", 
+                type: "색욕",
+                atkType: "타격",
+                skill_num: "2",
+                skill2_info: "[사용시] 대상의 침잠이 5 이상이면 합 위력 +1<br>[사용시] 대상의 침잠 횟수가 3 이상이면 코인 위력 +1<br>(Ⅱ) [적중시] 침잠 횟수 3 증가", 
+                def_value: 4, 
+                plus_value: 5,
+                count_of_coin: 2,
+                maxValue: "17",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "접객도 4식 봉심", 
+                type: "분노",
+                atkType: "참격",
+                skill_num: "1",
+                skill3_info: "[사용시] 대상의 침잠 횟수가 5 이상이면 코인 위력 +2<br>(Ⅰ) [적중시] 침잠 횟수 3 증가<br><br>"
+                + "(Ⅳ) [적중시] 다음 턴에 저택의 메아리 2 부여.<br>[적중시] 대상에게 저택의 메아리가 있으면 침잠 횟수 3 증가", 
+                def_value: 4, 
+                plus_value: 2,
+                count_of_coin: 4,
+                maxValue: "20",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "사냥 대비",
+                type: "우울",
+                def_type: "방어",
+                skill_num: "별도 생성",
+                def_skill_info: "[사용시] 대상의 침잠이 10 이상이면 코인 위력 +7", // 효과가 없는 경우엔 공백 처리
+                def_value: 7, 
+                plus_value: 6,
+                count_of_coin: 1,
+                maxValue: "20",
+            }
         }
     },
     {
@@ -967,6 +1289,70 @@ const characters = [
             slash: "취약",
             pierce: "보통",
             blunt: "내성"
+        },
+
+        stats: {
+            hp: "229", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "4-8" // 속도
+        },
+
+        passives: {
+            passive_name: "휘파람",
+            passive: "[색욕 x 4 공명]\n전투 시작 시 정신력이 가장 낮은 아군 2명의 정신력 15 회복.<br>대상이 N사 광신도면 광신 2 부여", // 패시브
+            supassive_name: "속삭임",
+            support_passive: "[색욕 x 3 공명]\n전투 시작 시 정신력이 가장 낮은 아군 1명의 정신력 15 회복.<br>대상이 N사 광신도면 광신 2 부여" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "광소", // 스킬 명
+                type: "질투", // 죄악 속성
+                atkType: "관통",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "[합 승리시] 대상의 정신력 3 감소<br>(Ⅰ) [적중시] 못 1 부여<br><br>(Ⅱ) [적중시] 출혈 2 부여"
+                + "[적중시] 자신의 충전 횟수 2 증가", // 스킬에 대한 설명
+                def_value: 4, // 기본 위력
+                plus_value: 3, // 코인 당 추가 위력
+                count_of_coin: 2, // 코인의 갯수
+                maxValue: "10", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "쥐어짐", 
+                type: "색욕",
+                atkType: "관통",
+                skill_num: "2",
+                skill2_info: "(Ⅰ) [적중시] 못 2 부여<br><br>(Ⅱ) [적중시] 못 2 부여<br><br>(Ⅲ) [앞면 적중시] 다음 턴에 마비 1 부여<br>[적중시] 다음 턴에 주시 부여", 
+                def_value: 4, 
+                plus_value: 4,
+                count_of_coin: 3,
+                maxValue: "16",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "처단", 
+                type: "오만",
+                atkType: "타격",
+                skill_num: "1",
+                skill3_info: "이 스킬로 적 처치 시 모든 아군의 정신력을 10 회복시키고,<br>모든 아군에게 관통 피해량 증가, 타격 피해량 증가 1 부여<br>(Ⅰ) [적중시] 못 2 부여<br><br>[앞면 적중시] 못 2 부여<br><br>대상에게 못이 5 이상 있으면, 피해량 +70%", 
+                def_value: 6, 
+                plus_value: 2,
+                count_of_coin: 3,
+                maxValue: "12",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "불결하군요",
+                type: "색욕",
+                def_type: "회피",
+                skill_num: "별도 생성",
+                def_skill_info: "[회피 성공시] 대상의 정신력 3 감소", // 효과가 없는 경우엔 공백 처리
+                def_value: 4, 
+                plus_value: 10,
+                count_of_coin: 1,
+                maxValue: "14",
+            }
         }
     },
     {
@@ -976,15 +1362,150 @@ const characters = [
             slash: "보통",
             pierce: "내성",
             blunt: "취약"
+        },
+
+        stats: {
+            hp: "196", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "4-7" // 속도
+        },
+
+        passives: {
+            passive_name: "차가 식기 전에…",
+            passive: "[탐식 x 3 보유]\n상대의 약점, 취약 속성(내성 1 초과)으로 공격할 때, 공격 전 대상의 파열만큼 호흡을 얻음 (턴 당 최대 20)", // 패시브
+            supassive_name: "세븐 협회의 티타임",
+            support_passive: "[탐식 x 4 보유]\n속도가 가장 빠른 아군 1명이 상대의 약점, 취약 속성(내성 1 초과)으로 공격 시 대상의 파열에 비례하여 피해량 증가 (파열 1 당 1.5%. 최대 15%)<br>효과를 적용받은 대상이 세븐 협회 해결사면, 피해량 추가 증가 (파열 1 당 0.5%. 최대 5%)" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "예측 분석", // 스킬 명
+                type: "질투", // 죄악 속성
+                atkType: "참격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "대상의 파열 3 당 코인 위력 +1 (최대 2)<br>"
+                + "(Ⅱ) [적중시] 파열 3 부여", // 스킬에 대한 설명
+                def_value: 4, // 기본 위력
+                plus_value: 3, // 코인 당 추가 위력
+                count_of_coin: 2, // 코인의 갯수
+                maxValue: "14", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "대상 해체", 
+                type: "우울",
+                atkType: "관통",
+                skill_num: "2",
+                skill2_info: "대상의 파열 6 당 코인 위력 +1 (최대 2)<br>[합 승리시] 파열 횟수 3 증가<br>(Ⅰ) [적중시] 파열 3 부여<br><br>(Ⅲ) [적중시] 대상의 파열이 6 이상이면, 다음 턴에 약점 분석 부여", 
+                def_value: 4, 
+                plus_value: 4,
+                count_of_coin: 3,
+                maxValue: "22",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "프로파일링", 
+                type: "탐식",
+                atkType: "참격",
+                skill_num: "1",
+                skill3_info: "[사용시] 대상의 파열 3 당 피해량 +10% (최대 50%)<br>[합 승리시] 파열 횟수 2 증가<br>(Ⅱ) [적중시] 파열 3 부여<br><br>[공격 종료시] 대상이 흐트러짐 상태가 되거나 사망하면, 다음 턴에 신속 1, 참격 위력 증가 1을 얻음", 
+                def_value: 5, 
+                plus_value: 4,
+                count_of_coin: 3,
+                maxValue: "17",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "빠르게 해결하죠",
+                type: "색욕",
+                def_type: "방어",
+                skill_num: "별도 생성",
+                def_skill_info: "[사용시] 다음 턴에 신속 1을 얻음 (턴 당 최대 3)", // 효과가 없는 경우엔 공백 처리
+                def_value: 4, 
+                plus_value: 10,
+                count_of_coin: 1,
+                maxValue: "14",
+            }
         }
     },
     {
         name: "[ 로보토미 E.G.O::후회 ] 파우스트",
         image: "images/Faust/후파우.png",
+        grade: 3,
+        isWalpurgis:  true,
         resistances: {
             slash: "내성",
             pierce: "취약",
             blunt: "보통"
+        },
+
+        stats: {
+            hp: "229", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "4-8" // 속도
+        },
+
+        passives: {
+            passive_name: "떠밀린 후회",
+            passive: "[분노 x 6 보유]\n합 진행 시 대상이 보유한 부정적인 효과 3개당 대상의 합 위력 -1 (최대 2)<br>- 자신이 생존해 있을 때, 진동 폭발을 당하는 적이 방어 레벨 감소 2를 얻음 (턴 당 적 1명당 최대 3회)<br>- 정신 오염: 턴 종료 시 정신력이 -25 미만일 때 다음 턴에 속박 2, 타격 위력 증가 1을 얻음", // 패시브
+            supassive_name: "억압 작업",
+            support_passive: "[분노 x 5 보유]\n속도가 가장 느린 아군 1명이 합 진행 시 대상이 보유한 부정적인 효과가 3개 이상이면, 대상의 합 위력 -1" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "조여오는 구속구", // 스킬 명
+                type: "나태", // 죄악 속성
+                atkType: "타격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "[사용시] 자신의 진동 횟수 3 증가<br>"
+                + "[합 패배] 자신의 진동 횟수 3 증가<br>(Ⅰ) [적중시] 자신의 진동 횟수 3 증가<br>[적중시] 진동 횟수 3 증가", // 스킬에 대한 설명
+                def_value: 4, // 기본 위력
+                plus_value: 7, // 코인 당 추가 위력
+                count_of_coin: 1, // 코인의 갯수
+                maxValue: "11", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "금속성 울림", 
+                type: "오만",
+                atkType: "타격",
+                skill_num: "2",
+                skill2_info: "[전투 시작시] 자신의 진동 횟수 5를 소모하여 이 스킬의 공격 가중치 +1<br>[사용시] 자신의 진동 횟수 4 증가<br>(Ⅰ) [앞면 적중시] 자신의 진동 횟수 1 증가<br>"
+                + "[적중시] 다음 턴에 공격 레벨 감소 1 부여<br><br>(Ⅲ) [적중시] 다음 턴에 더하기 코인 약화 1 부여", 
+                def_value: 4, 
+                plus_value: 4,
+                count_of_coin: 3,
+                maxValue: "16",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "풀려난 폭력성", 
+                type: "분노",
+                atkType: "타격",
+                skill_num: "1",
+                skill3_info: "[전투 시작시] 자신의 진동 횟수 5를 소모하여 이 스킬의 공격 가중치 +1 (최대 +2)<br>"
+                + "[합 패배] 정신력 20 감소<br>대상이 보유한 부정적인 효과 1개당 피해량이 6% 증가 (최대 30%)<br>[적 처치 시] 자신의 진동 횟수 2 증가<br>(Ⅰ) [적중시] 진동 폭발<br>"
+                + "진동 폭발 시 최종 흐트러짐 손상의 30%만큼 분노 피해를 줌 (최대 20)<br><br>(Ⅱ) [적중시] 진동 폭발<br>진동 폭발 시 최종 흐트러짐 손상의 30%만큼 분노 피해를 줌 (최대 20)"
+                + "<br><br>(Ⅲ) [적중시] 진동 폭발<br>진동 폭발 시 최종 흐트러짐 손상의 30%만큼 분노 피해를 줌 (최대 20)" +
+                "진동 횟수 3 감소", 
+                def_value: 3, 
+                plus_value: 5,
+                count_of_coin: 3,
+                maxValue: "18",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "앙금 쌓기",
+                type: "우울",
+                def_type: "반격",
+                skill_num: "별도 생성",
+                def_skill_info: "[사용시] 자신의 진동 횟수 6 증가", // 효과가 없는 경우엔 공백 처리
+                def_value: 9, 
+                plus_value: 5,
+                count_of_coin: 1,
+                maxValue: "14",
+            }
         }
     },
     {
@@ -994,6 +1515,71 @@ const characters = [
             slash: "내성",
             pierce: "보통",
             blunt: "취약"
+        },
+
+        stats: {
+            hp: "201", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "3-8" // 속도
+        },
+
+        passives: {
+            passive_name: "매화 같이 터져나오는 피",
+            passive: "[오만 x 4 보유]\n크리티컬 적중 시 홍매화 1 부여.<br>대상의 홍매화가 10이면, 대신 방어 레벨 감소 1 부여 (최대 6회)", // 패시브
+            supassive_name: "미련 서린 검끝",
+            support_passive: "[오만 x 4 보유]\n편성 순서가 가장 빠른 아군이 참격 속성 스킬로 크리티컬 적중 시 방어 레벨 감소 1 부여 (턴 당 적 1명당 최대 3)" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "월하검무", // 스킬 명
+                type: "나태", // 죄악 속성
+                atkType: "참격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "자신의 호흡이 5 이상이면, 코인 위력 +1<br>[사용시] [사용시] 자신의 호흡 횟수 2 증가"
+                + "(Ⅱ) [앞면 적중시] 호흡 1 얻음<br><br>(Ⅲ) [크리티컬 적중시] 홍매화 1 부여", // 스킬에 대한 설명
+                def_value: 3, // 기본 위력
+                plus_value: 2, // 코인 당 추가 위력
+                count_of_coin: 3, // 코인의 갯수
+                maxValue: "12", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "자법", 
+                type: "오만",
+                atkType: "관통",
+                skill_num: "2",
+                skill2_info: "자신의 호흡이 7 이상이면, 코인 위력 +1<br>[사용시] 자신의 호흡 횟수 2 증가<br>(Ⅰ) [적중시] 자신의 호흡 횟수 2 증가<br><br>"
+                + "(Ⅱ) [적중시] 속밥 1 부여<br>[크리티컬 적중시] 홍매화 2 부여", 
+                def_value: 4, 
+                plus_value: 6,
+                count_of_coin: 2,
+                maxValue: "18",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "흩날리는 홍매화", 
+                type: "우울",
+                atkType: "참격",
+                skill_num: "1",
+                skill3_info: "대상의 홍매화 1 당 피해량 +3%<br>자신의 호흡 7 당 코인 위력 +1 (최대 3)<br>[합 승리시] 자신의 호흡 횟수를 절반 감소하고, 감소한 양만큼 호흡을 얻음<br>이 스킬로 크리티컬 적중 시 홍매화가 감소하지 않음<br>(Ⅰ) [크리티컬 적중시] 홍매화 5 부여<br>[크리티컬 적중시] 대상의 홍매화가 10이면, 참격 취약 1 부여<br><br>(Ⅱ) [크리티컬 적중시] 홍매화 5 부여<br>[크리티컬 적중시] 대상의 홍매화가 10이면, 참격 취약 1 부여", 
+                def_value: 5, 
+                plus_value: 6,
+                count_of_coin: 2,
+                maxValue: "23",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "흘려내기",
+                type: "우울",
+                def_type: "방어",
+                skill_num: "별도 생성",
+                def_skill_info: "[사용시] 자신의 호흡 4 당 최종 위력 +1 (최대 5)", // 효과가 없는 경우엔 공백 처리
+                def_value: 10, 
+                plus_value: 4,
+                count_of_coin: 1,
+                maxValue: "19",
+            }
         }
     },
     {
@@ -1003,6 +1589,70 @@ const characters = [
             slash: "보통",
             pierce: "취약",
             blunt: "내성"
+        },
+
+        stats: {
+            hp: "191", // 체력
+            unfightGauge: "(1)127, (2)69, (3)29",
+            speed: "3-7" // 속도
+        },
+
+        passives: {
+            passive_name: "전류 해체",
+            passive: "[질투 x 3 보유]\n전투 중 누적으로 자신의 충전 횟수 10을 소모할 때마다, 충전 1 얻음<br>충전이 2 이상이면, 피해량이 (충전 × 3)%만큼 증가 (최대 15%)<br>"
+            + "- 대상의 체력이 50% 미만이면 피해량이 (충전 × 5)%만큼 추가로 증가 (최대 25%)<br>적을 처치하면 자신과 충전 횟수가 가장 적은 아군 2명이 (2 + 충전)만큼 충전 횟수 증가 (최대 5, 충전을 소모하거나 스스로 획득하는 스킬을 보유한 아군에게 우선으로 적용됨)", // 패시브
+            supassive_name: "해체 보조 전류",
+            support_passive: "[질투 x 5 보유]\n충전 횟수가 가장 적은 아군 1명이 적 처치 시 충전 횟수 3 증가 (턴 당 1회, 충전을 소모하거나 스스로 획득하는 스킬을 보유한 아군에게 우선으로 적용됨)" // 서포트 패시브
+        },
+
+        skills: {
+            skill1: { // 1스킬에 대한 정보들
+                skill_name: "40Y-3 가동", // 스킬 명
+                type: "색욕", // 죄악 속성
+                atkType: "참격",
+                skill_num: "3", // 스킬 갯수
+                skill1_info: "[사용시] 충전 횟수를 5 소모하여 코인 위력 +2", // 스킬에 대한 설명
+                def_value: 3, // 기본 위력
+                plus_value: 4, // 코인 당 추가 위력
+                count_of_coin: 2, // 코인의 갯수
+                maxValue: "15", // 고점
+                multiple_target: "1" // 공격 가중치 
+            },
+            skill2: {
+                skill_name: "충전역류", 
+                type: "질투",
+                atkType: "타격",
+                skill_num: "2",
+                skill2_info: "[사용시] 충전 횟수가 5 이상 10 미만이면, 최대 체력의 2 × (10 - 현재 충전 횟수)%만큼 체력을 소모하여 충전 횟수가 10으로 증가<br>[사용시] 자신의 충전 횟수를 10 소모하여 코인 위력 +2<br><br>(Ⅲ) 이 스킬을 포함한 공명이 3 이상이면, 보유한 충전 횟수를 전부 소모하여 이 스킬로 소모한 충전 횟수당 피해량 +(충전 + 4)% (최대 180%)", 
+                def_value: 4, 
+                plus_value: 4,
+                count_of_coin: 3,
+                maxValue: "22",
+                multiple_target: "1"
+            },
+            skill3: {
+                skill_name: "40Y-3 충전", 
+                type: "우울",
+                atkType: "타격",
+                skill_num: "1",
+                skill3_info: "자신의 충전 당 코인 위력 +1 (최대 4)<br><br>(Ⅰ) [적중시] (충전 + 5)만큼 자신의 충전 횟수 증가 (최대 8)<br><br>(Ⅱ) [적중시] (충전 + 5)만큼 자신의 충전 횟수 증가 (최대 8)<br><br>(Ⅳ) 충전이 3 이상이면 충전당 피해량 +8% (최대 40%)<br>[적중시] 다음 턴에 질투 취약 1 부여<br>- 충전이 2 이상이면, 추가로 1 부여", 
+                def_value: 6, 
+                plus_value: 3,
+                count_of_coin: 3,
+                maxValue: "32",
+                multiple_target: "1"
+            },
+            defense_skill: {
+                skill_name: "충전",
+                type: "질투",
+                def_type: "방어",
+                skill_num: "별도 생성",
+                def_skill_info: "[사용시] 자신의 충전 횟수 4 증가 (턴 당 2회)", // 효과가 없는 경우엔 공백 처리
+                def_value: 12, 
+                plus_value: 6,
+                count_of_coin: 1,
+                maxValue: "18",
+            }
         }
     },
     {
@@ -1898,59 +2548,111 @@ const characters = [
     },
 ];
 
+let isInitialized = false;
+
 document.addEventListener("DOMContentLoaded", function () {
+    if (isInitialized) return;
+    isInitialized = true;
+
+    // characters 배열이 정의되어 있는지 확인
+    if (typeof characters === 'undefined') {
+        console.error('characters 배열이 정의되지 않았습니다!');
+        return;
+    }
+    
+    console.log(`총 캐릭터 수: ${characters.length}`);
+    if (characters.length > 0) {
+        console.log('첫 번째 캐릭터:', characters[0].name);
+        console.log('처음 5개 캐릭터:', characters.slice(0, 5).map(c => c.name));
+    }
+
     const searchInput = document.getElementById("search-input");
     const searchButton = document.getElementById("search-button");
-    const searchSuggestions = document.getElementById("search-suggestions"); // HTML에서 미리 만들어놓기
+    const searchSuggestions = document.getElementById("search-suggestions");
+    const resultContainer = document.getElementById("result");
 
-    // 🔹 추천 검색어 기능 (input 이벤트)
+    // 검색어 추천 기능
     searchInput.addEventListener("input", function () {
         const query = searchInput.value.trim().toLowerCase();
-        searchSuggestions.innerHTML = ""; // 기존 추천어 삭제
+        
+        // 먼저 추천 목록 완전히 초기화
+        searchSuggestions.innerHTML = "";
+        searchSuggestions.style.display = "none";
 
         if (!query) {
-            searchSuggestions.style.display = "none";
             return;
         }
 
-        // 🔹 검색어 포함된 캐릭터 필터링
+        // 검색어 포함된 캐릭터 필터링
         const filteredCharacters = characters.filter((char) =>
             char.name.toLowerCase().includes(query)
         );
 
+        console.log(`검색어: "${query}", 필터된 캐릭터 수: ${filteredCharacters.length}`);
+        
         if (filteredCharacters.length > 0) {
-            searchSuggestions.style.display = "block";
-            filteredCharacters.forEach((char) => {
+            // 최대 8개까지 표시
+            const displayCount = Math.min(filteredCharacters.length, 8);
+            console.log(`표시할 캐릭터 수: ${displayCount}`);
+            
+            filteredCharacters.slice(0, displayCount).forEach((char, index) => {
+                console.log(`추가 중인 캐릭터 ${index + 1}: ${char.name}`);
+                
                 const suggestion = document.createElement("div");
-                suggestion.innerText = char.name;
+                suggestion.textContent = char.name;
                 suggestion.classList.add("suggestion-item");
 
-                // 🔹 추천어 클릭 시 검색 실행
+                // 추천어 클릭 시 검색 실행
                 suggestion.addEventListener("click", function () {
                     searchInput.value = char.name;
                     searchSuggestions.style.display = "none";
                     displayCharacterInfo(char);
+                    resultContainer.style.display = "block";
                 });
 
                 searchSuggestions.appendChild(suggestion);
             });
-        } else {
-            searchSuggestions.style.display = "none";
+            
+            searchSuggestions.style.display = "block";
+            console.log(`실제 추가된 요소 수: ${searchSuggestions.children.length}`);
         }
     });
 
+    // 검색 버튼 클릭
     searchButton.addEventListener("click", function () {
+        performSearch();
+    });
+
+    // 엔터키로 검색
+    searchInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            performSearch();
+        }
+    });
+
+    // 검색 실행 함수
+    function performSearch() {
+        const query = searchInput.value.trim();
+        if (!query) {
+            alert("검색어를 입력해주세요!");
+            return;
+        }
+
         const selectedCharacter = characters.find(
-            (char) => char.name === searchInput.value
+            (char) => char.name.toLowerCase() === query.toLowerCase() ||
+                     char.name.toLowerCase().includes(query.toLowerCase())
         );
 
         if (selectedCharacter) {
             displayCharacterInfo(selectedCharacter);
+            resultContainer.style.display = "block";
+            searchSuggestions.style.display = "none";
         } else {
-            alert("다시 검색해 주세요!");
+            alert("해당 인격을 찾을 수 없습니다. 다시 검색해 주세요!");
         }
-    });
+    }
 
+    // 외부 클릭 시 추천 목록 숨기기
     document.addEventListener("click", function (event) {
         if (!searchInput.contains(event.target) && !searchSuggestions.contains(event.target)) {
             searchSuggestions.style.display = "none";
@@ -1978,25 +2680,53 @@ function displayCharacterInfo(character) {
 function setupSkillPassiveToggle(character) {
     const skillSection = document.getElementById('skills-section');
     const passiveSection = document.getElementById('passive-section');
+    const skillBtn = document.getElementById('toggle-skills');
+    const passiveBtn = document.getElementById('toggle-passives');
 
-    document.getElementById('toggle-skills').addEventListener('click', function() {
+    // 기존 이벤트 리스너 제거 후 새로 추가
+    const newSkillBtn = skillBtn.cloneNode(true);
+    const newPassiveBtn = passiveBtn.cloneNode(true);
+    skillBtn.parentNode.replaceChild(newSkillBtn, skillBtn);
+    passiveBtn.parentNode.replaceChild(newPassiveBtn, passiveBtn);
+
+    newSkillBtn.addEventListener('click', function() {
         skillSection.style.display = 'block';
         passiveSection.style.display = 'none';
+        newSkillBtn.classList.add('active');
+        newPassiveBtn.classList.remove('active');
     });
 
-    document.getElementById('toggle-passives').addEventListener('click', function() {
+    newPassiveBtn.addEventListener('click', function() {
         skillSection.style.display = 'none';
         passiveSection.style.display = 'block';
+        newPassiveBtn.classList.add('active');
+        newSkillBtn.classList.remove('active');
         displayPassiveInfo(character);
     });
 
+    // 초기 상태 설정
+    skillSection.style.display = 'block';
+    passiveSection.style.display = 'none';
+    newSkillBtn.classList.add('active');
+    newPassiveBtn.classList.remove('active');
+    
     displaySkillInfo(character, 'skill1');
 }
 
 function setupSkillButtons(character) {
     const skillButtons = document.querySelectorAll('.skill-btn');
+    
     skillButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        // 기존 이벤트 리스너를 제거하기 위해 복제
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+        
+        newButton.addEventListener('click', function() {
+            // 모든 스킬 버튼에서 active 클래스 제거
+            document.querySelectorAll('.skill-btn').forEach(btn => btn.classList.remove('active'));
+            // 현재 버튼에 active 클래스 추가
+            this.classList.add('active');
+            
             const skillKey = this.getAttribute('data-skill');
             if (skillKey === 'defense') {
                 displaySkillInfo(character, 'defense_skill');
@@ -2005,6 +2735,11 @@ function setupSkillButtons(character) {
             }
         });
     });
+    
+    // 첫 번째 스킬 버튼을 기본 선택으로 설정
+    if (skillButtons.length > 0) {
+        skillButtons[0].classList.add('active');
+    }
 }
 
 function displaySkillInfo(character, skillKey) {
@@ -2020,196 +2755,15 @@ function displaySkillInfo(character, skillKey) {
         <p class="skill-I-Data" style="color: white;"> ${highlightKeywords(skill.skill1_info || skill.skill2_info || skill.skill3_info || skill.def_skill_info)}</p>
         <div class="skill-power">
             <div>
-                기본 위력: ${skill.def_value}
-                코인 위력: ${skill.plus_value}
-                코인 개수: ${skill.count_of_coin} <br><br>
-                최종위력: ${Math.abs(skill.def_value + (skill.plus_value * skill.count_of_coin))}
+                기본 위력: ${skill.def_value}<br>
+                코인 위력: ${skill.plus_value}<br>
+                코인 개수: ${skill.count_of_coin}<br><br>
+                최종위력: ${Math.abs(skill.def_value + (skill.plus_value * skill.count_of_coin))}<br>
                 고점: ${skill.maxValue}
             </div>
-    `;
-    const skillTypeElement = document.getElementById("c-type");
-    setStyleColorAtk(skillTypeElement, skill.type);
-}
-
-function setStyleColorAtk(skillTypeElement, skillType) {
-    const atkColors = {
-        "분노": "#fd0101",
-        "색욕": "#fc9802",
-        "나태": "#feea3e",
-        "탐식": "#72fc16",
-        "우울": "#49d4f7",
-        "오만": "#073cfc",
-        "질투": "#9207fc"
-    };
-    skillTypeElement.style.color = atkColors[skillType] || "#ffffff"; // 기본값 흰색
-}
-
-function highlightKeywords(text) {
-    const keywordColors = { 
-        "출혈": "#fd0101", 
-        "화상": "#fc9802", 
-        "진동": "#feea3e", 
-        "파열": "#72fc16", 
-        "침잠": "#49d4f7", 
-        "호흡": "#073cfc", 
-        "충전": "#9207fc",
-        // 키워드 이외 텍스트 강조
-        // "적중시": "#90EE90",
-        // "회피 성공 시": "#90EE90",
-        // "공격 시작 전": "#90EE90",
-        // "전투 시작시": "#90EE90",
-        // "앞면 적중시": "#90EE90",
-        // "크리티컬 적중시": "#90EE90",
-        // "사용시": "#87CEEB",
-        // "합 패배": "#Ff0000",
-        // "미끼 요정": "#FF0000",
-        // "합 승리시": "#FFA500",
-        // "도발치": "#A52A2A",
-        // "파괴 불가 코인": "#A52A2A",
-        // "탐구한 지식": "#A52A2A",
-        // "버림": "#A52A2A"
-    };
-
-    // |적중시|회피 성공 시|공격 시작 전|전투 시작시|앞면 적중시|크리티컬 적중시|사용시|합 패배|합 승리시|도발치|파괴 불가 코인|탐구한 지식|버림
-    // 정규식을 사용하여 키워드를 찾아 변환
-    return text.replace(/(충전 역장|침잠쇄도|출혈|화상|진동|파열|침잠|호흡|충전|버림|탐구한 지식|파괴 불가 코인|미끼 요정|차원 균열)/g, (match) => {
-        const color = keywordColors[match];
-        return `<span style="color: ${color}; font-weight: bold;">
-                    <img src="icons/${match}.png" alt="" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 1px;">
-                    ${match}
-                </span>`;
-    });
-}
-   
-document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("search-input");
-    const searchButton = document.getElementById("search-button");
-    const searchSuggestions = document.getElementById("search-suggestions"); // HTML에서 미리 만들어놓기
-
-    // 🔹 추천 검색어 기능 (input 이벤트)
-    searchInput.addEventListener("input", function () {
-        const query = searchInput.value.trim().toLowerCase();
-        searchSuggestions.innerHTML = ""; // 기존 추천어 삭제
-
-        if (!query) {
-            searchSuggestions.style.display = "none";
-            return;
-        }
-
-        // 🔹 검색어 포함된 캐릭터 필터링
-        const filteredCharacters = characters.filter((char) =>
-            char.name.toLowerCase().includes(query)
-        );
-
-        if (filteredCharacters.length > 0) {
-            searchSuggestions.style.display = "block";
-            filteredCharacters.forEach((char) => {
-                const suggestion = document.createElement("div");
-                suggestion.innerText = char.name;
-                suggestion.classList.add("suggestion-item");
-
-                // 🔹 추천어 클릭 시 검색 실행
-                suggestion.addEventListener("click", function () {
-                    searchInput.value = char.name;
-                    searchSuggestions.style.display = "none";
-                    displayCharacterInfo(char);
-                });
-
-                searchSuggestions.appendChild(suggestion);
-            });
-        } else {
-            searchSuggestions.style.display = "none";
-        }
-    });
-
-    searchButton.addEventListener("click", function () {
-        const selectedCharacter = characters.find(
-            (char) => char.name === searchInput.value
-        );
-
-        if (selectedCharacter) {
-            displayCharacterInfo(selectedCharacter);
-        } else {
-            alert("다시 검색해 주세요!");
-        }
-    });
-
-    document.addEventListener("click", function (event) {
-        if (!searchInput.contains(event.target) && !searchSuggestions.contains(event.target)) {
-            searchSuggestions.style.display = "none";
-        }
-    });
-});
-
-function displayCharacterInfo(character) {
-    document.getElementById('character-name').innerText = character.name;
-    document.getElementById('character-image').src = character.image;
-
-    document.getElementById('slash-resistance').innerText = character.resistances.slash;
-    document.getElementById('pierce-resistance').innerText = character.resistances.pierce;
-    document.getElementById('blunt-resistance').innerText = character.resistances.blunt;
-
-    document.getElementById('hp').innerText = character.stats.hp;
-    document.getElementById('unFightGauge').innerText = character.stats.unfightGauge;
-    document.getElementById('speed').innerText = character.stats.speed;
-
-    setupSkillPassiveToggle(character);
-    setStyleColorResi(character);
-    setupSkillButtons(character);
-}
-
-function setupSkillPassiveToggle(character) {
-    const skillSection = document.getElementById('skills-section');
-    const passiveSection = document.getElementById('passive-section');
-
-    document.getElementById('toggle-skills').addEventListener('click', function() {
-        skillSection.style.display = 'block';
-        passiveSection.style.display = 'none';
-    });
-
-    document.getElementById('toggle-passives').addEventListener('click', function() {
-        skillSection.style.display = 'none';
-        passiveSection.style.display = 'block';
-        displayPassiveInfo(character);
-    });
-
-    displaySkillInfo(character, 'skill1');
-}
-
-function setupSkillButtons(character) {
-    const skillButtons = document.querySelectorAll('.skill-btn');
-    skillButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const skillKey = this.getAttribute('data-skill');
-            if (skillKey === 'defense') {
-                displaySkillInfo(character, 'defense_skill');
-            } else {
-                displaySkillInfo(character, `skill${skillKey}`);
-            }
-        });
-    });
-}
-
-function displaySkillInfo(character, skillKey) {
-    const skill = character.skills[skillKey];
-    if (!skill) return;
-
-    const skillDetails = document.getElementById('skill-info');
-    skillDetails.innerHTML = `
-        <div class="skill-title">
-            <h3>${skill.skill_name}</h3>
-            <span id="c-type">죄악 속성: ${skill.type} (x${skill.skill_num})</span>
         </div>
-        <p class="skill-I-Data" style="color: white;"> ${highlightKeywords(skill.skill1_info || skill.skill2_info || skill.skill3_info || skill.def_skill_info)}</p>
-        <div class="skill-power">
-            <div>
-                기본 위력: ${skill.def_value}
-                코인 위력: ${skill.plus_value}
-                코인 개수: ${skill.count_of_coin} <br><br>
-                최종위력: ${Math.abs(skill.def_value + (skill.plus_value * skill.count_of_coin))}
-                고점: ${skill.maxValue}
-            </div>
     `;
+    
     const skillTypeElement = document.getElementById("c-type");
     setStyleColorAtk(skillTypeElement, skill.type);
 }
@@ -2224,10 +2778,12 @@ function setStyleColorAtk(skillTypeElement, skillType) {
         "오만": "#073cfc",
         "질투": "#9207fc"
     };
-    skillTypeElement.style.color = atkColors[skillType] || "#ffffff"; // 기본값 흰색
+    skillTypeElement.style.color = atkColors[skillType] || "#ffffff";
 }
 
 function highlightKeywords(text) {
+    if (!text) return "";
+    
     const keywordColors = { 
         "출혈": "#fd0101", 
         "화상": "#fc9802", 
@@ -2235,95 +2791,145 @@ function highlightKeywords(text) {
         "파열": "#72fc16", 
         "침잠": "#49d4f7", 
         "호흡": "#073cfc", 
-        "충전": "#9207fc",
-        // 키워드 이외 텍스트 강조
-        // "적중시": "#90EE90",
-        // "회피 성공 시": "#90EE90",
-        // "공격 시작 전": "#90EE90",
-        // "전투 시작시": "#90EE90",
-        // "앞면 적중시": "#90EE90",
-        // "크리티컬 적중시": "#90EE90",
-        // "사용시": "#87CEEB",
-        // "합 패배": "#Ff0000",
-        // "미끼 요정": "#FF0000",
-        // "합 승리시": "#FFA500",
-        // "도발치": "#A52A2A",
-        // "파괴 불가 코인": "#A52A2A",
-        // "탐구한 지식": "#A52A2A",
-        // "버림": "#A52A2A"
+        "충전": "#9207fc"
     };
 
-    // |적중시|회피 성공 시|공격 시작 전|전투 시작시|앞면 적중시|크리티컬 적중시|사용시|합 패배|합 승리시|도발치|파괴 불가 코인|탐구한 지식|버림
-    // 정규식을 사용하여 키워드를 찾아 변환
-    return text.replace(/(충전 역장|침잠쇄도|출혈|화상|진동|파열|침잠|호흡|충전|버림|탐구한 지식|파괴 불가 코인|미끼 요정|차원 균열|산나비·죽은나비|나비|취약|마비|신속|속박)/g, (match) => {
-        const color = keywordColors[match];
-        return `<span style="color: ${color}; font-weight: bold;">
-                    <img src="icons/${match}.png" alt="" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 1px;">
+    // 키워드별 설명 정보
+    const keywordDescriptions = {
+        "출혈": "매 턴 종료 시 보유 수만큼 체력 피해를 입음",
+        "화상": "매 턴 종료 시 보유 수만큼 체력 피해를 입고 1 감소",
+        "진동": "체력 피해를 받을 때 진동 수만큼 추가 피해를 받고 모두 소모됨",
+        "파열": "매 턴 종료 시 보유 수만큼 체력 피해를 입고 절반으로 감소",
+        "침잠": "매 턴 종료 시 보유 수만큼 흐트러짐 피해를 입음",
+        "호흡": "매 턴 종료 시 보유 수만큼 체력을 회복하고 1 감소",
+        "충전": "전기 관련 효과에 활용되는 상태이상",
+        "충전 역장": "충전을 소모하여 공격력을 증가시키는 효과",
+        "침잠쇄도": "침잠을 활용한 강력한 공격 효과",
+        "버림": "자원을 소모하여 강력한 효과를 발동",
+        "탐구한 지식": "축적된 지식을 활용한 특수 효과",
+        "파괴 불가 코인": "파괴될 수 없는 특수한 코인",
+        "미끼 요정": "적의 주의를 끄는 특수 효과",
+        "차원 균열": "차원을 가르는 강력한 공격",
+        "산나비·죽은나비": "나비 관련 특수 상태",
+        "나비": "변화와 재생을 상징하는 효과",
+        "취약": "받는 피해가 증가하는 디버프",
+        "마비": "행동이 제한되는 상태이상",
+        "신속": "행동 속도가 증가하는 버프",
+        "속박": "이동이나 행동이 제한되는 상태",
+        "저택의 메아리": "과거의 기억이나 환상과 관련된 효과",
+        "못": "고정이나 속박과 관련된 효과",
+        "주시": "감시하여 정보를 얻거나 효과를 발동",
+        "광신": "극도의 믿음으로 인한 강화 효과",
+        "약점 분석": "적의 약점을 파악하여 효과적인 공격"
+    };
+
+    return text.replace(/(충전 역장|침잠쇄도|출혈|화상|진동|파열|침잠|호흡|충전|버림|탐구한 지식|파괴 불가 코인|미끼 요정|차원 균열|산나비·죽은나비|나비|취약|마비|신속|속박|저택의 메아리|못|주시|광신|약점 분석)/g, (match) => {
+        const color = keywordColors[match] || "#ffffff";
+        const description = keywordDescriptions[match] || "효과 설명이 없습니다.";
+        
+        return `<span style="color: ${color}; font-weight: bold; cursor: help;" 
+                      title="${description}"
+                      onmouseenter="showTooltip(event, '${description}')"
+                      onmouseleave="hideTooltip()">
+                    <img src="icons/${match}.png" alt="" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 1px;" onerror="this.style.display='none';">
                     ${match}
                 </span>`;
     });
+}
+
+// 툴팁 표시 함수들
+function showTooltip(event, text) {
+    // 기존 툴팁이 있다면 제거
+    hideTooltip();
+    
+    const tooltip = document.createElement('div');
+    tooltip.id = 'keyword-tooltip';
+    tooltip.innerHTML = text;
+    tooltip.style.cssText = `
+        position: fixed;
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        max-width: 250px;
+        z-index: 10000;
+        border: 1px solid #d4af37;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+        line-height: 1.4;
+    `;
+    
+    document.body.appendChild(tooltip);
+    
+    // 마우스 위치에 따라 툴팁 위치 조정
+    const rect = tooltip.getBoundingClientRect();
+    let left = event.clientX + 10;
+    let top = event.clientY - rect.height - 10;
+    
+    // 화면 경계를 넘지 않도록 조정
+    if (left + rect.width > window.innerWidth) {
+        left = event.clientX - rect.width - 10;
+    }
+    if (top < 0) {
+        top = event.clientY + 10;
+    }
+    
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+}
+
+function hideTooltip() {
+    const tooltip = document.getElementById('keyword-tooltip');
+    if (tooltip) {
+        tooltip.remove();
+    }
 }
    
 function displayPassiveInfo(character) {
     const passiveDetails = document.getElementById('passive-section');
-    passiveDetails.innerHTML = ""; // 기존 내용 초기화
+    passiveDetails.innerHTML = "";
 
-    // 🔹 첫 번째 패시브 출력
+    // 첫 번째 패시브 출력
     if (character.passives.passive_name && character.passives.passive) {
         passiveDetails.innerHTML += `
-            <p style="font-weight: bold; color: darkorange;">패시브 1: <span>${character.passives.passive_name}</span></p>
-            <p>${character.passives.passive}</p>
+            <p style="font-weight: bold; color: darkorange;">패시브 : <span>${character.passives.passive_name}</span></p>
+            <p>${highlightKeywords(character.passives.passive)}</p>
         `;
     }
 
-    // 🔹 두 번째 패시브 출력 (있을 경우)
+    // 두 번째 패시브 출력 (있을 경우)
     if (character.passives.passive_name2 && character.passives.passive2) {
         passiveDetails.innerHTML += `
-            <p style="font-weight: bold; color: darkorange;">패시브 2: <span>${character.passives.passive_name2}</span></p>
-            <p>${character.passives.passive2}</p>
+            <p style="font-weight: bold; color: darkorange;">패시브 : <span>${character.passives.passive_name2}</span></p>
+            <p>${highlightKeywords(character.passives.passive2)}</p>
         `;
     }
 
-    // 🔹 세 번째 패시브 출력 (혹시 있을 경우)
+    // 세 번째 패시브 출력 (있을 경우)
     if (character.passives.passive_name3 && character.passives.passive3) {
         passiveDetails.innerHTML += `
-            <p style="font-weight: bold; color: darkorange;">패시브 3: <span>${character.passives.passive_name3}</span></p>
-            <p>${character.passives.passive3}</p>
+            <p style="font-weight: bold; color: darkorange;">패시브 : <span>${character.passives.passive_name3}</span></p>
+            <p>${highlightKeywords(character.passives.passive3)}</p>
         `;
     }
 
-    // 🔹 서포트 패시브 출력
+    // 서포트 패시브 출력
     if (character.passives.supassive_name && character.passives.support_passive) {
         passiveDetails.innerHTML += `
             <p style="font-weight: bold; color: darkorange;">서포트 패시브: <span>${character.passives.supassive_name}</span></p>
-            <p>${character.passives.support_passive}</p>
+            <p>${highlightKeywords(character.passives.support_passive)}</p>
         `;
     }
 }
 
-
-
-
 function setStyleColorResi(selectedCharacter) {
     const resistanceColors = {
         "취약": "#f27287",
         "보통": "#ffffff",
         "내성": "#bfbfbf"
     };
-    document.getElementById("slash-resistance").style.color = resistanceColors[selectedCharacter.resistances.slash];
-    document.getElementById("pierce-resistance").style.color = resistanceColors[selectedCharacter.resistances.pierce];
-    document.getElementById("blunt-resistance").style.color = resistanceColors[selectedCharacter.resistances.blunt];
-}
-
-
-
-
-function setStyleColorResi(selectedCharacter) {
-    const resistanceColors = {
-        "취약": "#f27287",
-        "보통": "#ffffff",
-        "내성": "#bfbfbf"
-    };
+    
     document.getElementById("slash-resistance").style.color = resistanceColors[selectedCharacter.resistances.slash];
     document.getElementById("pierce-resistance").style.color = resistanceColors[selectedCharacter.resistances.pierce];
     document.getElementById("blunt-resistance").style.color = resistanceColors[selectedCharacter.resistances.blunt];
